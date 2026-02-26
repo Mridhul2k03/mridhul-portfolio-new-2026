@@ -28,7 +28,7 @@ const Loader = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
   }, [onLoadingComplete]);
 
   return (
-    <div className={`fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out ${isFading ? 'opacity-0' : 'opacity-100'}`}>
+    <div className={`fixed inset-0 z-100 bg-black flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out ${isFading ? 'opacity-0' : 'opacity-100'}`}>
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-1 bg-linear-to-r from-transparent via-red-600/50 to-transparent" />
       
       <div className="w-full max-w-sm px-6 flex flex-col items-center gap-8">
