@@ -1,4 +1,4 @@
-import { Terminal, Facebook, Instagram, Github, Linkedin, Mail } from 'lucide-react';
+import { Terminal, Instagram, Github, Linkedin, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -50,14 +50,15 @@ const Footer = () => {
                          <h3 className="text-white font-bold uppercase tracking-widest mb-6">Connect</h3>
                          <div className="flex flex-wrap gap-4 mb-8">
                              {[
-                                 { icon: <Github className="w-5 h-5" />, href: "#", label: "GitHub" },
-                                 { icon: <Linkedin className="w-5 h-5" />, href: "#", label: "LinkedIn" },
-                                 { icon: <Instagram className="w-5 h-5" />, href: "#", label: "Instagram" },
-                                 { icon: <Facebook className="w-5 h-5" />, href: "#", label: "Facebook" },
+                                 { icon: <Github className="w-5 h-5" />, href: "https://github.com/Mridhul2k03", label: "GitHub" },
+                                 { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/in/mridhulkrishnatk/", label: "LinkedIn" },
+                                 { icon: <Instagram className="w-5 h-5" />, href: "https://www.instagram.com/__.mridhul.____/", label: "Instagram" },
                              ].map((social, idx) => (
                                  <a 
                                      key={idx} 
                                      href={social.href}
+                                     target="_blank"
+                                     rel="noopener noreferrer"
                                      aria-label={social.label}
                                      className="w-12 h-12 bg-neutral-900/50 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-400 hover:bg-red-600/10 hover:border-red-600/30 hover:text-red-500 transition-all duration-300 hover:-translate-y-1"
                                  >
@@ -67,7 +68,7 @@ const Footer = () => {
                          </div>
                          <div className="group inline-flex items-center gap-3 text-neutral-400 hover:text-white transition-colors">
                              <Mail className="w-5 h-5 group-hover:text-red-500 transition-colors" />
-                             <a href="mailto:hello@example.com" className="font-mono text-sm">hello@example.com</a>
+                             <a href="mailto:mridhulkrishnatk@gmail.com" className="font-mono text-sm">mridhulkrishnatk@gmail.com</a>
                          </div>
                     </div>
                 </div>

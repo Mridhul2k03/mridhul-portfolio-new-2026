@@ -1,4 +1,4 @@
-import { Mail as MailIcon, MapPin as MapPinIcon, Phone as PhoneIcon, Send as SendIcon, Github as GithubIcon, Linkedin as LinkedinIcon, Twitter as TwitterIcon } from 'lucide-react';
+import { Mail as MailIcon, MapPin as MapPinIcon, Phone as PhoneIcon, Send as SendIcon, Github as GithubIcon, Linkedin as LinkedinIcon, Instagram as InstagramIcon } from 'lucide-react';
 
 const Contact = () => {
     return (
@@ -76,7 +76,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold uppercase tracking-wider">Email Protocol</h3>
-                                    <p className="text-neutral-400 mt-1 font-mono">hello@mridhul.dev</p>
+                                    <p className="text-neutral-400 mt-1 font-mono">mridhulkrishnatk@gmail.com</p>
                                 </div>
                             </div>
                             
@@ -86,7 +86,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold uppercase tracking-wider">Voice Comm</h3>
-                                    <p className="text-neutral-400 mt-1 font-mono">+1 (555) 019-2834</p>
+                                    <p className="text-neutral-400 mt-1 font-mono">+91 95672 52212</p>
                                 </div>
                             </div>
 
@@ -96,7 +96,7 @@ const Contact = () => {
                                 </div>
                                 <div>
                                     <h3 className="text-lg font-bold uppercase tracking-wider">Base Coordinates</h3>
-                                    <p className="text-neutral-400 mt-1 font-mono">San Francisco, CA<br/>Earth, Milky Way</p>
+                                    <p className="text-neutral-400 mt-1 font-mono">Kozhikode, Kerala<br/>India</p>
                                 </div>
                             </div>
                         </div>
@@ -105,13 +105,15 @@ const Contact = () => {
                             <h3 className="text-lg font-bold uppercase tracking-wider mb-6">Social Nodes</h3>
                             <div className="flex gap-4">
                                 {[
-                                    { icon: <GithubIcon className="w-6 h-6" />, href: "#" },
-                                    { icon: <LinkedinIcon className="w-6 h-6" />, href: "#" },
-                                    { icon: <TwitterIcon className="w-6 h-6" />, href: "#" }
+                                    { icon: <GithubIcon className="w-6 h-6" />, href: "https://github.com/Mridhul2k03" },
+                                    { icon: <LinkedinIcon className="w-6 h-6" />, href: "https://www.linkedin.com/in/mridhulkrishnatk/" },
+                                    { icon: <InstagramIcon className="w-6 h-6" />, href: "https://www.instagram.com/__.mridhul.____/" }
                                 ].map((social, idx) => (
                                     <a 
                                         key={idx} 
                                         href={social.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="w-14 h-14 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-400 hover:text-white hover:border-red-500 hover:bg-red-500/20 hover:-translate-y-1 transition-all duration-300"
                                     >
                                         {social.icon}

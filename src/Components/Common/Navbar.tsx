@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, Facebook, Instagram, Github, Linkedin } from "lucide-react";
+import { ChevronRight, Instagram, Github, Linkedin } from "lucide-react";
 
 // Navbar Logo Component
 const NavbarLogo = ({ className }: { className?: string }) => (
@@ -141,12 +141,13 @@ const Navbar = () => {
                             style={{ transitionDelay: '800ms' }}
                         >
                             {[
-                                { Icon: Github, url: "#" },
-                                { Icon: Linkedin, url: "#" },
-                                { Icon: Instagram, url: "#" },
-                                { Icon: Facebook, url: "#" }
+                                { Icon: Github, url: "https://github.com/Mridhul2k03" },
+                                { Icon: Linkedin, url: "https://www.linkedin.com/in/mridhulkrishnatk/" },
+                                { Icon: Instagram, url: "https://www.instagram.com/__.mridhul.____/" },
                             ].map((social, idx) => (
                                 <a
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     key={idx}
                                     href={social.url}
                                     className="w-12 h-12 shrink-0 rounded-full border-2 border-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(220,38,38,0.5)]"

@@ -3,36 +3,36 @@ import { ExternalLink, Github, Terminal, Cpu, Layers } from 'lucide-react';
 const Projects = () => {
     const projects = [
         {
-            title: "CyberCore API",
-            description: "A high-performance, distributed microservices architecture for a real-time trading platform. Built with automated scaling and redundant database clusters.",
-            tech: ["Go", "gRPC", "PostgreSQL", "Kafka", "Docker"],
-            github: "#",
-            live: "#",
+            title: "Boat Rider Sports",
+            description: "A fully functional e-commerce website with features like product listing, cart management, and order processing.",
+            tech: ["Next.js", "Django", "MySQL", "Celery","Redis"],
+            github: "https://github.com/Mridhul2k03/boatridersports.in-backend.git",
+            live: "https://boatridersports.in",
             featured: true
         },
         {
-            title: "AuthNexus",
-            description: "An enterprise-grade centralized authentication and authorization server. Implements OAuth2.0 and OpenID Connect protocols with advanced fraud detection.",
-            tech: ["Node.js", "Redis", "MongoDB", "JWT", "AWS Cognito"],
+            title: "Mister Chair",
+            description: "A fully functional e-commerce website with features like product listing, cart management, and order processing.",
+            tech: ["Next.js", "Django", "MySQL", "Celery","Redis"],
+            github: "#",
+            live: "https://www.mrchair.in/",
+            featured: true
+        },
+        {
+            title: "Job Portal",
+            description: "A job portal website with features like job listing, job search, and job application.",
+            tech: ["react", "Django", "MySQL"],
             github: "#",
             live: "#",
             featured: false
         },
         {
-            title: "DataStream Matrix",
-            description: "Real-time analytics processing pipeline handling over 50k events per second. Features a custom query engine and live dashboard API.",
-            tech: ["Python", "FastAPI", "ClickHouse", "Elasticsearch"],
+            title: "CRM and Dashboard",
+            description: "A comprehensive CRM and dashboard system for managing customer relationships and business operations.",
+            tech: ["Django", "React", "MySQL"],
             github: "#",
             live: "#",
-            featured: false
-        },
-        {
-            title: "Sentinel Shield",
-            description: "Automated vulnerability scanning and dependency patching bot integrated directly into CI/CD pipelines for GitHub repositories.",
-            tech: ["Django", "Celery", "RabbitMQ", "GitHub Actions"],
-            github: "#",
-            live: "#",
-            featured: false
+            featured: true
         }
     ];
 
@@ -84,10 +84,10 @@ const Projects = () => {
                                 </div>
 
                                 <div className="flex items-center gap-4 pt-6 border-t border-neutral-900 group-hover:border-red-900/50 transition-colors">
-                                    <a href={project.github} className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-neutral-400 hover:text-white transition-colors">
+                                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-neutral-400 hover:text-white transition-colors">
                                         <Github className="w-5 h-5" /> Codebase
                                     </a>
-                                    <a href={project.live} className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-red-500 hover:text-red-400 transition-colors ml-4">
+                                    <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-red-500 hover:text-red-400 transition-colors ml-4">
                                         <ExternalLink className="w-5 h-5" /> Live Node
                                     </a>
                                 </div>
