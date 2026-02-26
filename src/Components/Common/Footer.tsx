@@ -74,11 +74,20 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-neutral-500 text-sm font-mono">
+                <div className="pt-8 mt-4 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-6 relative">
+                    <p className="text-neutral-500 text-sm font-mono z-10">
                         © {currentYear} Mridhul. All rights reserved.
                     </p>
-                    <p className="text-neutral-500 text-sm font-mono flex items-center gap-2">
+                    
+                    {/* Glass effect name in center */}
+                    <div className="md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 px-6 py-2 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md shadow-[0_4px_30px_rgba(255,0,0,0.05)] z-10 group overflow-hidden transition-all duration-300 hover:bg-white/[0.05] hover:border-red-600/30">
+                        <div className="absolute inset-0 bg-linear-to-r from-transparent via-red-600/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
+                        <span className="text-xl font-black tracking-[0.2em] bg-linear-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent uppercase text-center block drop-shadow-[0_0_8px_rgba(220,38,38,0.5)]">
+                            MRIDHUL
+                        </span>
+                    </div>
+
+                    <p className="text-neutral-500 text-sm font-mono flex items-center gap-2 z-10">
                         Engineered by <span className="text-red-600">Mridhul</span>
                     </p>
                 </div>
