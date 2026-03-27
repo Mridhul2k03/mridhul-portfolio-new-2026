@@ -1,8 +1,92 @@
+import { useState } from 'react';
 import { Mail as MailIcon, MapPin as MapPinIcon, Phone as PhoneIcon, Send as SendIcon, Github as GithubIcon, Linkedin as LinkedinIcon, Instagram as InstagramIcon } from 'lucide-react';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
+import emailjs from '@emailjs/browser';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+    });
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handlePhoneChange = (value: string | undefined) => {
+        setFormData(prev => ({ ...prev, phone: value || '' }));
+    };
+
+    const validateForm = () => {
+        if (!formData.name || !formData.email || !formData.phone || !formData.subject || !formData.message) {
+            toast.error("Please fill in all fields");
+            return false;
+        }
+        return true;
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        if (!validateForm()) return;
+        
+        setLoading(true);
+        const toastId = toast.loading("Transmitting message...");
+
+        try {
+            await emailjs.send(
+                'service_u9liffc', // Replace with EmailJS Service ID
+                'template_xtqraje', // Replace with EmailJS Template ID
+                {
+                    from_name: formData.name,
+                    from_email: formData.email,
+                    phone_number: formData.phone,
+                    subject: formData.subject,
+                    message: formData.message,
+                },
+                'J9_xQWnm-Cwje1tl5' // Replace with EmailJS Public Key
+            );
+            toast.success("Message transmitted successfully!", { id: toastId });
+            setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+        } catch (error) {
+            console.error(error);
+            toast.error("Transmission failed. Please try again.", { id: toastId });
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="min-h-screen bg-black text-white selection:bg-red-600/30 font-sans overflow-x-hidden pt-32 pb-16">
+            <style>{`
+                .phone-input-custom .PhoneInputInput {
+                    background: transparent;
+                    border: none;
+                    color: white;
+                    outline: none;
+                    width: 100%;
+                }
+                .phone-input-custom .PhoneInputCountry {
+                    margin-right: 10px;
+                }
+                .phone-input-custom .PhoneInputCountrySelect {
+                    background-color: transparent;
+                    color: transparent;
+                    color-scheme: dark;
+                }
+                .phone-input-custom .PhoneInputCountrySelect option {
+                    background-color: #171717;
+                    color: white;
+                }
+            `}</style>
+            <Toaster position="bottom-right" toastOptions={{ style: { background: '#171717', color: '#fff', border: '1px solid #262626' } }} />
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
                 
                 {/* Header */}
@@ -21,12 +105,15 @@ const Contact = () => {
                     <div className="bg-neutral-950/50 backdrop-blur-md border border-neutral-900 rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
                         <div className="absolute inset-0 bg-linear-to-br from-red-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                         
-                        <form className="relative z-10 space-y-6" onSubmit={(e) => e.preventDefault()}>
+                        <form className="relative z-10 space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Name</label>
                                     <input 
                                         type="text" 
+                                        name="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
                                         placeholder="John Doe"
                                         className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all"
                                     />
@@ -35,33 +122,58 @@ const Contact = () => {
                                     <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Email</label>
                                     <input 
                                         type="email" 
+                                        name="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
                                         placeholder="john@example.com"
                                         className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all"
                                     />
                                 </div>
                             </div>
-                            
-                            <div className="space-y-2">
-                                <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Subject</label>
-                                <input 
-                                    type="text" 
-                                    placeholder="Project Inquiry"
-                                    className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all"
-                                />
+
+                            <div className="grid md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                    <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Phone Number</label>
+                                    <PhoneInput
+                                        placeholder="Enter phone number"
+                                        value={formData.phone}
+                                        onChange={handlePhoneChange}
+                                        defaultCountry="IN"
+                                        className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus-within:border-red-500 focus-within:ring-1 focus-within:ring-red-500 transition-all phone-input-custom"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Subject</label>
+                                    <input 
+                                        type="text" 
+                                        name="subject"
+                                        value={formData.subject}
+                                        onChange={handleChange}
+                                        placeholder="Project Inquiry"
+                                        className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all"
+                                    />
+                                </div>
                             </div>
 
                             <div className="space-y-2">
                                 <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Message</label>
                                 <textarea 
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
                                     rows={5}
                                     placeholder="Execute project details..."
                                     className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all resize-none"
                                 />
                             </div>
 
-                            <button className="w-full group relative px-8 py-4 bg-red-600 text-white font-bold uppercase tracking-wider overflow-hidden rounded-lg flex items-center justify-center gap-2">
-                                <span className="relative z-10">Transmit Message</span>
-                                <SendIcon className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                            <button 
+                                type="submit"
+                                disabled={loading}
+                                className="w-full group relative px-8 py-4 bg-red-600 text-white font-bold uppercase tracking-wider overflow-hidden rounded-lg flex items-center justify-center gap-2 hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                            >
+                                <span className="relative z-10">{loading ? 'Transmitting...' : 'Transmit Message'}</span>
+                                {!loading && <SendIcon className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
                                 <div className="absolute inset-0 bg-red-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
                             </button>
                         </form>

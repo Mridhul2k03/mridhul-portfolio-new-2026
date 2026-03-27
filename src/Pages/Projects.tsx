@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Terminal, Cpu, Layers } from 'lucide-react';
+import { Terminal, Cpu, Layers } from 'lucide-react';
 
 const Projects = () => {
     const projects = [
@@ -83,15 +83,16 @@ const Projects = () => {
                                     ))}
                                 </div>
 
-                                <div className="flex items-center gap-4 pt-6 border-t border-neutral-900 group-hover:border-red-900/50 transition-colors">
+                                {/* <div className="flex items-center gap-4 pt-6 border-t border-neutral-900 group-hover:border-red-900/50 transition-colors">
                                     <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-neutral-400 hover:text-white transition-colors">
                                         <Github className="w-5 h-5" /> Codebase
                                     </a>
                                     <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-red-500 hover:text-red-400 transition-colors ml-4">
                                         <ExternalLink className="w-5 h-5" /> Live Node
                                     </a>
-                                </div>
+                                </div> */}
                             </div>
+                            
                         </div>
                     ))}
                 </div>

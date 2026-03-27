@@ -143,7 +143,7 @@ const Index = () => {
                             </p>
                             <ul className="space-y-4">
                                 {[
-                                    'RESTful & GraphQL API Design',
+                                    'RESTful API Design',
                                     'Database Architecture & Optimization',
                                     'Distributed Systems & Microservices',
                                     'CI/CD Pipelines & DevOps'
