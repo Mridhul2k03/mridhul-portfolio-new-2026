@@ -10,7 +10,7 @@ import Skills from './Pages/Skills'
 import Contact from './Pages/Contact'
 
 import { Routes, Route } from 'react-router-dom'
-
+import { Analytics } from "@vercel/analytics/react"
 function App() {  
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,6 +31,7 @@ function App() {
       </Routes>
     </main>
     <Footer />
+    <Analytics />
    </div>
   )
 }
