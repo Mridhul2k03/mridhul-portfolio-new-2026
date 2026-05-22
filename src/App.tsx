@@ -8,6 +8,7 @@ import About from './Pages/About'
 import Projects from './Pages/Projects'
 import Skills from './Pages/Skills'
 import Contact from './Pages/Contact'
+import NotFound from './Pages/NotFound'
 
 import { Routes, Route } from 'react-router-dom'
 import { Analytics } from "@vercel/analytics/react"
@@ -28,6 +29,7 @@ function App() {
         <Route path='/projects' element={<Projects />} />
         <Route path='/skills' element={<Skills />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </main>
     <Footer />
