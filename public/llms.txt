@@ -1,0 +1,106 @@
+# Mridhul Krishna - Software Engineer & Backend Developer Portfolio
+
+> Professional portfolio of Mridhul Krishna, a software engineer specializing in high-performance backend architectures, distributed systems, database optimization, and scalable web solutions.
+
+This file provides a structured, LLM-optimized summary of Mridhul Krishna's professional profile, technical capabilities, key engineering projects, and codebase structure. It is designed to be easily parsed and understood by large language models, AI crawlers, and developers.
+
+## Core Coordinates
+
+- **Name:** Mridhul Krishna
+- **Role:** Software Engineer & Backend Architect
+- **Location:** Kozhikode, Kerala, India
+- **Email:** mridhulkrishnatk@gmail.com
+- **Phone:** +91 95672 52212
+- **Website:** [https://mridhulkrishna.in](https://mridhulkrishna.in)
+- **GitHub:** [https://github.com/Mridhul2k03](https://github.com/Mridhul2k03)
+- **LinkedIn:** [https://www.linkedin.com/in/mridhulkrishnatk/](https://www.linkedin.com/in/mridhulkrishnatk/)
+- **Instagram:** [https://www.instagram.com/__.mridhul.____/](https://www.instagram.com/__.mridhul.____/)
+
+---
+
+## Technical Arsenal
+
+Mridhul specializes in building resilient, distributed, and highly available architectures with a heavy emphasis on backend performance.
+
+### 1. Backend Core & Orchestration
+- **Languages:** Python, TypeScript, JavaScript, SQL
+- **Frameworks:** Django, Django REST Framework (DRF), Node.js, Express.js
+- **Asynchronous Task Processing:** Celery (task queues, distributed workers, event-driven processes)
+
+### 2. Database & Caching Architecture
+- **Relational Databases:** MySQL, PostgreSQL, SQLite
+- **Caching & In-Memory Stores:** Redis (multi-level caching, session management, messaging broker)
+- **Database Tuning:** Query optimization, advanced indexing, query profiling, refactoring slow queries, redundant system structures.
+
+### 3. Frontend Engineering
+- **Libraries/Frameworks:** React.js, Next.js, HTML5, CSS3
+- **Styling:** Tailwind CSS (including Tailwind v4), Responsive Layouts, Fluid Typography
+
+### 4. DevOps, Infrastructure & Cloud
+- **Cloud Providers:** Amazon Web Services (AWS)
+- **Deployment & Hosting:** Vercel, Cpanel, Docker containers
+- **Tools & Workflows:** CI/CD pipelines, Git, modern package managers (npm, vite)
+
+### 5. Security Protocols
+- **Practices:** CSRF Protection, JSON Web Tokens (JWT), OAuth 2.0, SSL/TLS, Data Encryption, API Rate Limiting
+
+---
+
+## Key Deployed Systems & Projects
+
+### Boat Rider Sports
+*Highly scalable e-commerce infrastructure and backend database configuration.*
+- **Role:** Backend Architect & Developer
+- **Live Node:** [https://boatridersports.in](https://boatridersports.in)
+- **Codebase:** [GitHub Repository](https://github.com/Mridhul2k03/boatridersports.in-backend.git)
+- **Stack:** Next.js, Django, MySQL, Celery, Redis
+- **Features:** Product listing catalog, real-time cart state management, secure order processing pipelines, asynchronous background worker tasks via Celery for order notifications and reports, Redis caching layers for quick catalog retrieval.
+
+### Mister Chair
+*Enterprise-level e-commerce application for premium seating solutions.*
+- **Role:** Backend Architect & Developer
+- **Live Node:** [https://www.mrchair.in/](https://www.mrchair.in/)
+- **Stack:** Next.js, Django, MySQL, Celery, Redis
+- **Features:** Catalog management, complex transactional flows, inventory handling, background tasks, and low latency caching.
+
+### CRM and Dashboard
+*A comprehensive platform for business workflow management.*
+- **Role:** Full Stack Developer
+- **Stack:** Django, React, MySQL
+- **Features:** Customer relationships management, analytics tracker, interactive telemetry dashboards, role-based access control, automated email triggers.
+
+### Job Portal
+*An interactive talent acquisition matching system.*
+- **Role:** Full Stack Developer
+- **Stack:** React, Django, MySQL
+- **Features:** Dynamic job listings, advanced job search matching, application tracking dashboard, instant resume parsing pipelines.
+
+---
+
+## Portfolio Codebase Specifications
+
+For developers or AI agents assisting in maintaining or reviewing this portfolio website, the repository is structured as a modern **React + TypeScript + Vite + Tailwind CSS** application.
+
+### Key File Directories
+- `/index.html`: Main HTML template, contains highly optimized meta headers, JSON-LD structured schema for SEO/GEO/AEO, and semantic `<noscript>` fallback for crawler indexing.
+- `/src/main.tsx`: App bootstrapping script.
+- `/src/App.tsx`: App Router configuring React Router Dom.
+- `/src/index.css`: Global design guidelines and Tailwind layers.
+- `/src/Pages/`:
+  - `Index.tsx`: Splash home screen featuring terminal-like intro animations and layout.
+  - `About.tsx`: Professional telemetry, system load graph component, experience overview.
+  - `Skills.tsx`: Breakdown of technical arsenal, separated into categorized cards (Frontend, Backend, Database, DevOps).
+  - `Projects.tsx`: Curated list of deployed systems with specific descriptions, tags, and interactive links.
+  - `Contact.tsx`: Interactive communication terminal featuring an EmailJS form integrated with React Hot Toast and phone validation.
+  - `NotFound.tsx`: Scaled-down matrix fallback screen for unmatched routes.
+- `/src/Components/`: Reusable components (UI overlays, navigation bars, visual dividers).
+- `/public/`:
+  - `robots.txt`: Crawler control file.
+  - `sitemap.xml`: SEO sitemap listing core routes (`/`, `/about`, `/projects`, `/skills`, `/contact`).
+  - `llms.txt`: This document (available on the live website).
+
+### Available Commands
+- `npm run dev`: Bootstraps the local development server (Vite) on port `5173`.
+- `npm run build`: Compiles the TypeScript code (`tsc`) and builds the optimized production assets to `dist/`.
+- `npm run lint`: Triggers ESLint syntax and code quality checks.
+- `npm run preview`: Previews the production build locally.
