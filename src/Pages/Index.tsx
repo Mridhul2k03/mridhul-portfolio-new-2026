@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Database, Server, Cpu, Code2, Layers, ShieldCheck, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../Components/Common/SEO';
 
 const Index = () => {
     const [typedText, setTypedText] = useState('');
@@ -34,6 +35,10 @@ const Index = () => {
 
     return (
         <div className="min-h-screen bg-black text-white selection:bg-red-600/30 font-sans overflow-x-hidden pt-24 pb-16">
+            <SEO 
+                canonical="https://mridhulkrishna.in/"
+                ogUrl="https://mridhulkrishna.in/"
+            />
             {/* Background effects */}
             <div className="fixed inset-0 z-0 pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-red-900/20 blur-[120px] rounded-full" />

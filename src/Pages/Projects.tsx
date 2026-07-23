@@ -1,4 +1,5 @@
 import { Terminal, Cpu, Layers } from 'lucide-react';
+import SEO from '../Components/Common/SEO';
 
 const Projects = () => {
     const projects = [
@@ -38,6 +39,12 @@ const Projects = () => {
 
     return (
         <div className="min-h-screen bg-black text-white selection:bg-red-600/30 font-sans overflow-x-hidden pt-32 pb-16">
+            <SEO 
+                title="Projects"
+                description="Explore backend systems, APIs, and scalable architectures engineered by Mridhul Krishna including Boat Rider Sports, Mister Chair, and CRM platforms."
+                canonical="https://mridhulkrishna.in/projects"
+                ogUrl="https://mridhulkrishna.in/projects"
+            />
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
                 
                 <div className="mb-16">

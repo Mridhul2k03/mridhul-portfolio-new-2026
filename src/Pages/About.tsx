@@ -1,8 +1,15 @@
 import { Terminal, Code, Coffee, Globe } from 'lucide-react';
+import SEO from '../Components/Common/SEO';
 
 const About = () => {
     return (
         <div className="min-h-screen bg-black text-white selection:bg-red-600/30 font-sans overflow-x-hidden pt-32 pb-16">
+            <SEO 
+                title="About Me"
+                description="Learn about Mridhul Krishna, a backend developer specializing in performance, database optimization, distributed systems, Python, Django, and cloud infrastructure."
+                canonical="https://mridhulkrishna.in/about"
+                ogUrl="https://mridhulkrishna.in/about"
+            />
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
                 
                 <div className="grid lg:grid-cols-2 gap-16 items-center">

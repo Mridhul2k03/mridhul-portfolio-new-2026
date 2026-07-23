@@ -1,9 +1,15 @@
 import { AlertOctagon, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../Components/Common/SEO';
 
 const NotFound = () => {
     return (
         <div className="min-h-screen bg-black text-white selection:bg-red-600/30 font-sans overflow-x-hidden pt-32 pb-16 flex flex-col justify-center items-center relative">
+            <SEO 
+                title="404 Page Not Found"
+                description="The requested page could not be found."
+                noindex={true}
+            />
             {/* Background effects */}
             <div className="fixed inset-0 z-0 pointer-events-none">
                 <div className="absolute top-[20%] left-[20%] w-[30%] h-[30%] bg-red-900/10 blur-[120px] rounded-full animate-pulse" />

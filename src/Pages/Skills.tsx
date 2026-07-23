@@ -1,4 +1,5 @@
 import { Server, Database, Boxes, Terminal, Shield, Monitor } from 'lucide-react';
+import SEO from '../Components/Common/SEO';
 
 const Skills = () => {
     const skillCategories = [
@@ -26,6 +27,12 @@ const Skills = () => {
 
     return (
         <div className="min-h-screen bg-black text-white selection:bg-red-600/30 font-sans overflow-x-hidden pt-32 pb-16">
+            <SEO 
+                title="Skills & Expertise"
+                description="Discover Mridhul Krishna's technical stack: Python, Django, MySQL, PostgreSQL, Redis, Celery, AWS, React, and TypeScript for backend & web engineering."
+                canonical="https://mridhulkrishna.in/skills"
+                ogUrl="https://mridhulkrishna.in/skills"
+            />
             <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
                 
                 <div className="text-center mb-20">

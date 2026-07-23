@@ -4,6 +4,7 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 import emailjs from '@emailjs/browser';
 import toast, { Toaster } from 'react-hot-toast';
+import SEO from '../Components/Common/SEO';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -65,6 +66,12 @@ const Contact = () => {
 
     return (
         <div className="min-h-screen bg-black text-white selection:bg-red-600/30 font-sans overflow-x-hidden pt-32 pb-16">
+            <SEO 
+                title="Contact"
+                description="Get in touch with Mridhul Krishna for backend engineering, system architecture, freelance projects, or technical consulting."
+                canonical="https://mridhulkrishna.in/contact"
+                ogUrl="https://mridhulkrishna.in/contact"
+            />
             <style>{`
                 .phone-input-custom .PhoneInputInput {
                     background: transparent;
