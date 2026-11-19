@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './Components/Common/Navbar'
 import Footer from './Components/Common/Footer'
 import Loader from './Components/Common/Loader'
+import CodingBackground from './Components/Common/CodingBackground'
 import Index from './Pages/Index'
 import About from './Pages/About'
 import Projects from './Pages/Projects'
@@ -12,29 +13,32 @@ import NotFound from './Pages/NotFound'
 
 import { Routes, Route } from 'react-router-dom'
 import { Analytics } from "@vercel/analytics/react"
+
 function App() {  
   const [isLoading, setIsLoading] = useState(true);
 
-  if (isLoading) {
-    return <Loader onLoadingComplete={() => setIsLoading(false)} />;
-  }
-
   return (
-   <div className="flex flex-col min-h-screen bg-black animate-in fade-in duration-1000">
-    <Navbar />
-    <main className="grow">
-      <Routes>
-        <Route path='/' element={<Index />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/projects' element={<Projects />} />
-        <Route path='/skills' element={<Skills />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </main>
-    <Footer />
-    <Analytics />
-   </div>
+    <div className="flex flex-col min-h-screen bg-black text-white relative selection:bg-white/20 selection:text-white">
+      {/* Global HUD / Coding Background (Image 2 style) */}
+      <CodingBackground />
+
+      {isLoading && (
+        <Loader onLoadingComplete={() => setIsLoading(false)} />
+      )}
+      <Navbar />
+      <main className="grow relative z-10">
+        <Routes>
+          <Route path='/' element={<Index />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/projects' element={<Projects />} />
+          <Route path='/skills' element={<Skills />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+      <Analytics />
+    </div>
   )
 }
 
