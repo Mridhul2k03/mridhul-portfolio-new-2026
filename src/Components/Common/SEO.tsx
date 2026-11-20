@@ -16,13 +16,13 @@ interface SEOProps {
 }
 
 const DEFAULT_SEO = {
-  title: 'Mridhul | Backend Developer & Software Engineer',
+  title: 'Mridhul Krishna | Best Django Full Stack Developer in Kozhikode, Kerala, India',
   description:
-    'Portfolio of Mridhul, a software engineer architecting scalable systems and engineering high-performance software. Turning complex problems into elegant logic.',
+    'Portfolio of Mridhul Krishna, top-rated Django full stack developer and backend engineer in Nanminda, Kozhikode, Kerala, India. Expert in Python, Django REST Framework, React, TypeScript, PostgreSQL, Redis, Celery, and scalable system architecture.',
   keywords:
-    'Mridhul Krishna, Backend Developer India, Python Developer Kerala, Django Developer, Software Engineer Portfolio, Full Stack Developer, REST API Developer, Scalable Web Applications, High Performance Backend, React Developer, Next.js Developer, TypeScript Developer, Python Django REST, Web Application Developer, API Development, Cloud Deployment, Firebase Integration, Portfolio Website Developer',
+    'best Django fullstack developer in kozhikode, best Django developer in kerala, best Django full stack developer in nanminda, best Django developer in india, python django developer kozhikode, full stack developer calicut kerala, software engineer nanminda kozhikode, backend developer kerala, freelance django developer india, react django full stack developer, django rest framework specialist, python fullstack developer calicut, web application developer kerala, hire django developer kerala india, scalable backend architect india, python developer nanminda, mridhul krishna, mridhul krishna portfolio',
   siteUrl: 'https://mridhulkrishna.in',
-  defaultImage: 'https://mridhulkrishna.in/mridhul.webp',
+  defaultImage: 'https://mridhulkrishna.in/og-image.png',
 };
 
 export const SEO = ({
@@ -42,7 +42,7 @@ export const SEO = ({
   const isHome = !title;
   const pageTitle = isHome
     ? DEFAULT_SEO.title
-    : `${title} | Mridhul - Backend Developer & Software Engineer`;
+    : `${title} | Mridhul Krishna - Best Django Full Stack Developer in Kozhikode, Kerala`;
 
   const currentCanonical = canonical || (ogUrl ? ogUrl : DEFAULT_SEO.siteUrl);
   const metaOgTitle = ogTitle || pageTitle;
@@ -56,8 +56,14 @@ export const SEO = ({
       <title>{pageTitle}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta name="author" content="Mridhul" />
+      <meta name="author" content="Mridhul Krishna" />
       <link rel="canonical" href={currentCanonical} />
+
+      {/* Geo Meta Tags for Local & Regional SEO */}
+      <meta name="geo.region" content="IN-KL" />
+      <meta name="geo.placename" content="Nanminda, Kozhikode, Kerala, India" />
+      <meta name="geo.position" content="11.4365;75.8340" />
+      <meta name="ICBM" content="11.4365, 75.8340" />
 
       {noindex ? (
         <meta name="robots" content="noindex, nofollow" />
@@ -71,6 +77,9 @@ export const SEO = ({
       <meta property="og:title" content={metaOgTitle} />
       <meta property="og:description" content={metaOgDesc} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="Mridhul Krishna - Best Django Full Stack Developer in Kozhikode, Kerala, India" />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -78,6 +87,7 @@ export const SEO = ({
       <meta name="twitter:title" content={metaTwitterTitle} />
       <meta name="twitter:description" content={metaTwitterDesc} />
       <meta name="twitter:image" content={twitterImage} />
+      <meta name="twitter:image:alt" content="Mridhul Krishna - Best Django Full Stack Developer in Kozhikode, Kerala, India" />
     </Helmet>
   );
 };

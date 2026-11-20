@@ -216,8 +216,9 @@ const Skills = () => {
     return (
         <div className="min-h-screen text-white font-sans overflow-x-hidden pt-24 sm:pt-32 pb-16 sm:pb-24">
             <SEO 
-                title="Skills & Technical Arsenal"
-                description="Explore Mridhul Krishna's full technical stack: Python, Django, DRF, React, PostgreSQL, Redis, Celery, AWS, Cloudflare R2, AI/LLMs, and scalable system design."
+                title="Skills & Tech Stack | Python, Django, React, Cloud"
+                description="Explore Mridhul Krishna's technical stack: Python, Django REST Framework, React, PostgreSQL, Redis, Celery, AWS, Docker, AI integration, and scalable database architecture in Kerala, India."
+                keywords="django skills, python developer stack, react developer kerala, celery redis django, database optimization kozhikode, full stack skills india"
                 canonical="https://mridhulkrishna.in/skills"
                 ogUrl="https://mridhulkrishna.in/skills"
             />

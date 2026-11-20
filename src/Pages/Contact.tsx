@@ -67,8 +67,9 @@ const Contact = () => {
     return (
         <div className="min-h-screen text-white font-sans overflow-x-hidden pt-24 sm:pt-32 pb-16 sm:pb-24">
             <SEO 
-                title="Contact"
-                description="Get in touch with Mridhul Krishna for backend engineering, system architecture, freelance projects, or technical consulting."
+                title="Contact Mridhul Krishna | Hire Django Full Stack Developer"
+                description="Get in touch with Mridhul Krishna in Nanminda, Kozhikode, Kerala for Django full stack web development, backend engineering, freelance projects, or consulting across India and globally."
+                keywords="hire django developer kozhikode, contact mridhul krishna, freelance full stack developer kerala, python consultant india, web developer nanminda"
                 canonical="https://mridhulkrishna.in/contact"
                 ogUrl="https://mridhulkrishna.in/contact"
             />

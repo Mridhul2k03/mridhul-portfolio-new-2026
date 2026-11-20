@@ -184,8 +184,9 @@ const Projects = () => {
     return (
         <div className="min-h-screen text-white font-sans overflow-x-hidden pt-24 sm:pt-32 pb-16 sm:pb-24">
             <SEO 
-                title="Projects & Architecture Portfolio"
-                description="Explore production backend systems and full-stack web platforms engineered by Mridhul Krishna, including Exshare.ai, Boat Rider Sports, Speedine, StudentsGigs, and Custom CRMs."
+                title="Projects & Deployed Systems | Django & React Portfolio"
+                description="Explore production Django and full-stack web platforms developed by Mridhul Krishna in Kozhikode, Kerala, India, including Exshare.ai, Boat Rider Sports, Speedine, StudentsGigs, and enterprise CRMs."
+                keywords="django projects portfolio, full stack projects kerala, python web applications kozhikode, boat rider sports django, speedine pos, exshare ai, freelance django developer portfolio"
                 canonical="https://mridhulkrishna.in/projects"
                 ogUrl="https://mridhulkrishna.in/projects"
             />

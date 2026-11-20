@@ -31,8 +31,9 @@ const About = () => {
     return (
         <div className="min-h-screen text-white font-sans overflow-x-hidden pt-24 sm:pt-32 pb-16 sm:pb-24">
             <SEO 
-                title="About Mridhul Krishna | Full Stack Developer"
-                description="Backend & Full Stack Developer with 2+ years experience building scalable web applications with Python, Django, REST APIs, PostgreSQL, Redis, Celery, and React."
+                title="About Mridhul Krishna | Best Django Full Stack Developer in Kozhikode"
+                description="Learn more about Mridhul Krishna, top Django full stack developer and backend software engineer based in Nanminda, Kozhikode, Kerala, India. Specializing in Python, Django REST Framework, React, PostgreSQL, Celery, and scalable architecture."
+                keywords="about mridhul krishna, django developer kozhikode, full stack developer calicut kerala, python developer nanminda, software engineer kerala india, hire django developer"
                 canonical="https://mridhulkrishna.in/about"
                 ogUrl="https://mridhulkrishna.in/about"
             />
