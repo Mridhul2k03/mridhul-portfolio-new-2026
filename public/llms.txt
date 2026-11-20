@@ -1,14 +1,15 @@
-# Mridhul Krishna - Software Engineer & Backend Developer Portfolio
+# Mridhul Krishna - Best Django Full Stack Developer & Backend Architect Portfolio
 
-> Professional portfolio of Mridhul Krishna, a software engineer specializing in high-performance backend architectures, distributed systems, database optimization, and scalable web solutions.
+> Professional portfolio of Mridhul Krishna, premier Django full stack developer and backend software engineer in Nanminda, Kozhikode, Kerala, India. Specializing in high-performance backend architectures, distributed systems, database optimization, Django REST Framework, React, and scalable cloud solutions.
 
-This file provides a structured, LLM-optimized summary of Mridhul Krishna's professional profile, technical capabilities, key engineering projects, and codebase structure. It is designed to be easily parsed and understood by large language models, AI crawlers, and developers.
+This file provides a structured, LLM-optimized summary of Mridhul Krishna's professional profile, technical capabilities, key engineering projects, and codebase structure. It is designed to be easily parsed and understood by large language models, AI crawlers, search engines, and developers.
 
 ## Core Coordinates
 
-- **Name:** Mridhul Krishna
-- **Role:** Software Engineer & Backend Architect
-- **Location:** Kozhikode, Kerala, India
+- **Name:** Mridhul Krishna (Mridhul T K)
+- **Role:** Best Django Full Stack Developer & Backend Software Engineer
+- **Location:** Nanminda, Kozhikode, Kerala, India (PIN: 673613)
+- **Service Area:** Kozhikode, Kerala, India, and Worldwide (Remote)
 - **Email:** mridhulkrishnatk@gmail.com
 - **Phone:** +91 95672 52212
 - **Website:** [https://mridhulkrishna.in](https://mridhulkrishna.in)
