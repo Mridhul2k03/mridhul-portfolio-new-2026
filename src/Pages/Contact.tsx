@@ -43,8 +43,8 @@ const Contact = () => {
 
         try {
             await emailjs.send(
-                'service_u9liffc', // Replace with EmailJS Service ID
-                'template_xtqraje', // Replace with EmailJS Template ID
+                'service_u9liffc',
+                'template_xtqraje',
                 {
                     from_name: formData.name,
                     from_email: formData.email,
@@ -52,7 +52,7 @@ const Contact = () => {
                     subject: formData.subject,
                     message: formData.message,
                 },
-                'J9_xQWnm-Cwje1tl5' // Replace with EmailJS Public Key
+                'J9_xQWnm-Cwje1tl5'
             );
             toast.success("Message transmitted successfully!", { id: toastId });
             setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
@@ -65,7 +65,7 @@ const Contact = () => {
     };
 
     return (
-        <div className="min-h-screen bg-black text-white selection:bg-red-600/30 font-sans overflow-x-hidden pt-32 pb-16">
+        <div className="min-h-screen text-white font-sans overflow-x-hidden pt-24 sm:pt-32 pb-16 sm:pb-24">
             <SEO 
                 title="Contact"
                 description="Get in touch with Mridhul Krishna for backend engineering, system architecture, freelance projects, or technical consulting."
@@ -94,146 +94,143 @@ const Contact = () => {
                 }
             `}</style>
             <Toaster position="bottom-right" toastOptions={{ style: { background: '#171717', color: '#fff', border: '1px solid #262626' } }} />
-            <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-12">
                 
                 {/* Header */}
-                <div className="mb-16">
-                    <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-4">
-                        Initialize <span className="text-transparent bg-clip-text bg-linear-to-r from-red-500 to-red-800">Connection</span>
+                <div className="mb-10 sm:mb-14">
+                    <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight mb-3 sm:mb-4">
+                        Initialize <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400">Connection</span>
                     </h1>
-                    <div className="w-24 h-1 bg-red-600 mb-6" />
-                    <p className="text-xl text-neutral-400 max-w-2xl">
-                        Open for new opportunities, collaborations, or just a technical chat. Send a transmission.
+                    <div className="w-16 h-0.5 bg-gradient-to-r from-cyan-400 to-indigo-500 mb-4 sm:mb-6" />
+                    <p className="text-sm sm:text-lg md:text-xl text-neutral-400 max-w-2xl font-normal">
+                        Open for new opportunities, scalable architecture collaborations, or technical consultations.
                     </p>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-16">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
                     {/* Contact Form */}
-                    <div className="bg-neutral-950/50 backdrop-blur-md border border-neutral-900 rounded-2xl p-8 shadow-2xl relative overflow-hidden group">
-                        <div className="absolute inset-0 bg-linear-to-br from-red-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        
-                        <form className="relative z-10 space-y-6" onSubmit={handleSubmit}>
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Name</label>
+                    <div className="bg-neutral-950/60 backdrop-blur-md border border-neutral-900 hover:border-cyan-500/30 transition-colors rounded-2xl p-5 sm:p-8 shadow-2xl relative overflow-hidden">
+                        <form className="relative z-10 space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
+                            <div className="grid md:grid-cols-2 gap-5">
+                                <div className="space-y-1.5">
+                                    <label className="text-xs font-mono text-neutral-400 uppercase tracking-wider">Name</label>
                                     <input 
                                         type="text" 
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
                                         placeholder="John Doe"
-                                        className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all"
+                                        className="w-full bg-black/80 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/30 transition-all font-sans text-sm"
                                     />
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Email</label>
+                                <div className="space-y-1.5">
+                                    <label className="text-xs font-mono text-neutral-400 uppercase tracking-wider">Email</label>
                                     <input 
                                         type="email" 
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
                                         placeholder="john@example.com"
-                                        className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all"
+                                        className="w-full bg-black/80 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/30 transition-all font-sans text-sm"
                                     />
                                 </div>
                             </div>
 
-                            <div className="grid md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Phone Number</label>
+                            <div className="grid md:grid-cols-2 gap-5">
+                                <div className="space-y-1.5">
+                                    <label className="text-xs font-mono text-neutral-400 uppercase tracking-wider">Phone Number</label>
                                     <PhoneInput
                                         placeholder="Enter phone number"
                                         value={formData.phone}
                                         onChange={handlePhoneChange}
                                         defaultCountry="IN"
-                                        className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus-within:border-red-500 focus-within:ring-1 focus-within:ring-red-500 transition-all phone-input-custom"
+                                        className="w-full bg-black/80 border border-neutral-800 rounded-xl px-4 py-3 text-white focus-within:border-cyan-400 focus-within:ring-1 focus-within:ring-cyan-500/30 transition-all phone-input-custom text-sm"
                                     />
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Subject</label>
+                                <div className="space-y-1.5">
+                                    <label className="text-xs font-mono text-neutral-400 uppercase tracking-wider">Subject</label>
                                     <input 
                                         type="text" 
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleChange}
-                                        placeholder="Project Inquiry"
-                                        className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all"
+                                        placeholder="Project Architecture"
+                                        className="w-full bg-black/80 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/30 transition-all font-sans text-sm"
                                     />
                                 </div>
                             </div>
 
-                            <div className="space-y-2">
-                                <label className="text-sm font-mono text-red-500 uppercase tracking-wider">Message</label>
+                            <div className="space-y-1.5">
+                                <label className="text-xs font-mono text-neutral-400 uppercase tracking-wider">Message</label>
                                 <textarea 
                                     name="message"
                                     value={formData.message}
                                     onChange={handleChange}
-                                    rows={5}
+                                    rows={4}
                                     placeholder="Execute project details..."
-                                    className="w-full bg-black border border-neutral-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all resize-none"
+                                    className="w-full bg-black/80 border border-neutral-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500/30 transition-all resize-none font-sans text-sm"
                                 />
                             </div>
 
                             <button 
                                 type="submit"
                                 disabled={loading}
-                                className="w-full group relative px-8 py-4 bg-red-600 text-white font-bold uppercase tracking-wider overflow-hidden rounded-lg flex items-center justify-center gap-2 hover:bg-red-700 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+                                className="w-full px-8 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold uppercase tracking-wider rounded-full flex items-center justify-center gap-2 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/25 cursor-pointer"
                             >
-                                <span className="relative z-10">{loading ? 'Transmitting...' : 'Transmit Message'}</span>
-                                {!loading && <SendIcon className="w-5 h-5 relative z-10 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
-                                <div className="absolute inset-0 bg-red-700 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 ease-out" />
+                                <span>{loading ? 'Transmitting...' : 'Transmit Message'}</span>
+                                {!loading && <SendIcon className="w-4 h-4" />}
                             </button>
                         </form>
                     </div>
 
                     {/* Contact Info */}
-                    <div className="space-y-12 flex flex-col justify-center">
-                        <div className="space-y-8">
+                    <div className="space-y-8 flex flex-col justify-center">
+                        <div className="space-y-6">
                             <div className="flex items-start gap-4 group">
-                                <div className="p-4 bg-neutral-900 border border-neutral-800 rounded-xl group-hover:border-red-500 group-hover:bg-red-500/10 transition-colors">
-                                    <MailIcon className="w-6 h-6 text-red-500" />
+                                <div className="p-3.5 bg-cyan-950/30 border border-cyan-800/50 rounded-xl group-hover:border-cyan-500/60 group-hover:scale-105 transition-all">
+                                    <MailIcon className="w-5 h-5 text-cyan-400" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold uppercase tracking-wider">Email Protocol</h3>
-                                    <p className="text-neutral-400 mt-1 font-mono">mridhulkrishnatk@gmail.com</p>
+                                    <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-400">Email Protocol</h3>
+                                    <p className="text-white mt-0.5 font-mono text-sm sm:text-base group-hover:text-cyan-300 transition-colors">mridhulkrishnatk@gmail.com</p>
                                 </div>
                             </div>
                             
                             <div className="flex items-start gap-4 group">
-                                <div className="p-4 bg-neutral-900 border border-neutral-800 rounded-xl group-hover:border-red-500 group-hover:bg-red-500/10 transition-colors">
-                                    <PhoneIcon className="w-6 h-6 text-red-500" />
+                                <div className="p-3.5 bg-emerald-950/30 border border-emerald-800/50 rounded-xl group-hover:border-emerald-500/60 group-hover:scale-105 transition-all">
+                                    <PhoneIcon className="w-5 h-5 text-emerald-400" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold uppercase tracking-wider">Voice Comm</h3>
-                                    <p className="text-neutral-400 mt-1 font-mono">+91 95672 52212</p>
+                                    <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-400">Voice Comm</h3>
+                                    <p className="text-white mt-0.5 font-mono text-sm sm:text-base group-hover:text-emerald-300 transition-colors">+91 95672 52212</p>
                                 </div>
                             </div>
 
                             <div className="flex items-start gap-4 group">
-                                <div className="p-4 bg-neutral-900 border border-neutral-800 rounded-xl group-hover:border-red-500 group-hover:bg-red-500/10 transition-colors">
-                                    <MapPinIcon className="w-6 h-6 text-red-500" />
+                                <div className="p-3.5 bg-amber-950/30 border border-amber-800/50 rounded-xl group-hover:border-amber-500/60 group-hover:scale-105 transition-all">
+                                    <MapPinIcon className="w-5 h-5 text-amber-400" />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg font-bold uppercase tracking-wider">Base Coordinates</h3>
-                                    <p className="text-neutral-400 mt-1 font-mono">Kozhikode, Kerala<br/>India</p>
+                                    <h3 className="text-sm font-bold uppercase tracking-wider text-neutral-400">Base Coordinates</h3>
+                                    <p className="text-white mt-0.5 font-mono text-sm sm:text-base group-hover:text-amber-300 transition-colors">Kozhikode, Kerala, India</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="pt-8 border-t border-neutral-900">
-                            <h3 className="text-lg font-bold uppercase tracking-wider mb-6">Social Nodes</h3>
-                            <div className="flex gap-4">
+                        <div className="pt-6 border-t border-neutral-900">
+                            <h3 className="text-xs font-mono uppercase tracking-widest text-neutral-500 font-semibold mb-4">Social Nodes</h3>
+                            <div className="flex gap-3">
                                 {[
-                                    { icon: <GithubIcon className="w-6 h-6" />, href: "https://github.com/Mridhul2k03" },
-                                    { icon: <LinkedinIcon className="w-6 h-6" />, href: "https://www.linkedin.com/in/mridhulkrishnatk/" },
-                                    { icon: <InstagramIcon className="w-6 h-6" />, href: "https://www.instagram.com/__.mridhul.____/" }
+                                    { icon: <GithubIcon className="w-5 h-5" />, href: "https://github.com/Mridhul2k03", hover: "hover:border-white hover:text-white" },
+                                    { icon: <LinkedinIcon className="w-5 h-5" />, href: "https://www.linkedin.com/in/mridhulkrishnatk/", hover: "hover:border-[#0A66C2]/60 hover:text-[#0A66C2] hover:bg-[#0A66C2]/10" },
+                                    { icon: <InstagramIcon className="w-5 h-5" />, href: "https://www.instagram.com/__.mridhul.____/", hover: "hover:border-[#E4405F]/60 hover:text-[#E4405F] hover:bg-[#E4405F]/10" }
                                 ].map((social, idx) => (
                                     <a 
                                         key={idx} 
                                         href={social.href}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-14 h-14 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-400 hover:text-white hover:border-red-500 hover:bg-red-500/20 hover:-translate-y-1 transition-all duration-300"
+                                        className={`w-12 h-12 bg-neutral-900 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-400 transition-all duration-200 ${social.hover}`}
                                     >
                                         {social.icon}
                                     </a>

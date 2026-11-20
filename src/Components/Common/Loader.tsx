@@ -1,60 +1,106 @@
-import { useEffect, useState } from 'react';
-import { Terminal } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 
-const Loader = ({ onLoadingComplete }: { onLoadingComplete: () => void }) => {
-  const [progress, setProgress] = useState(0);
-  const [isFading, setIsFading] = useState(false);
+interface LoaderProps {
+  onLoadingComplete: () => void;
+}
+
+const Loader = ({ onLoadingComplete }: LoaderProps) => {
+  const brandName = "MRIDHUL";
+  const letters = brandName.split("");
+  const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    const duration = 2000;
-    const interval = 20;
-    const steps = duration / interval;
-    let currentStep = 0;
+    // Lock body scroll during loader
+    document.body.style.overflow = "hidden";
 
-    const timer = setInterval(() => {
-      currentStep++;
-      setProgress(Math.min((currentStep / steps) * 100, 100));
+    // Start exit transition after letters and subtitle hold
+    const exitTimer = setTimeout(() => {
+      setIsExiting(true);
+    }, 2000);
 
-      if (currentStep >= steps) {
-        clearInterval(timer);
-        setIsFading(true);
-        setTimeout(() => {
-          onLoadingComplete();
-        }, 500); // Fade out duration
-      }
-    }, interval);
+    return () => {
+      clearTimeout(exitTimer);
+      document.body.style.overflow = "";
+    };
+  }, []);
 
-    return () => clearInterval(timer);
-  }, [onLoadingComplete]);
+  const handleSkip = () => {
+    document.body.style.overflow = "";
+    onLoadingComplete();
+  };
 
   return (
-    <div className={`fixed inset-0 z-100 bg-black flex flex-col items-center justify-center transition-opacity duration-500 ease-in-out ${isFading ? 'opacity-0' : 'opacity-100'}`}>
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-1 bg-linear-to-r from-transparent via-red-600/50 to-transparent" />
-      
-      <div className="w-full max-w-sm px-6 flex flex-col items-center gap-8">
-        {/* Brand */}
-        <div className="flex items-center gap-3">
-          <Terminal className="w-10 h-10 text-red-600" />
-          <span className="text-4xl font-black text-white uppercase tracking-tighter">
-            Mridhul<span className="text-red-600">.</span>
-          </span>
-        </div>
+    <AnimatePresence
+      onExitComplete={() => {
+        document.body.style.overflow = "";
+        onLoadingComplete();
+      }}
+    >
+      {!isExiting && (
+        <motion.div
+          key="loader-overlay"
+          onClick={handleSkip}
+          initial={{ clipPath: "inset(0% 0% 0% 0%)" }}
+          exit={{
+            clipPath: "inset(50% 50% 50% 50%)",
+            transition: {
+              duration: 0.7,
+              ease: [0.56, 0.22, 0.05, 0.99],
+            },
+          }}
+          className="fixed inset-0 z-[100] bg-black text-white flex flex-col items-center justify-center cursor-pointer select-none overflow-hidden"
+          style={{ willChange: "clip-path" }}
+        >
+          <div className="flex flex-col items-center justify-center px-4 text-center">
+            {/* Title: MRIDHUL© */}
+            <div className="relative inline-flex items-center justify-center">
+              <div className="flex items-center tracking-tight">
+                {letters.map((char, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ opacity: 0, y: 15, rotateX: 35 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                    transition={{
+                      duration: 0.45,
+                      delay: 0.2 + index * 0.08,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
+                    className="inline-block font-sans font-black text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-white uppercase"
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </div>
 
-        {/* Loading Bar */}
-        <div className="w-full h-1 bg-neutral-900 rounded-full overflow-hidden relative">
-          <div 
-            className="absolute top-0 left-0 h-full bg-red-600 transition-all duration-75 ease-out rounded-full shadow-[0_0_15px_rgba(220,38,38,0.5)]"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
+              {/* Small Copyright Symbol © */}
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.2 + letters.length * 0.08 + 0.1 }}
+                className="font-sans font-bold text-xs sm:text-base md:text-xl text-neutral-300 self-start mt-1 sm:mt-2 md:mt-3 ml-1"
+              >
+                ©
+              </motion.span>
+            </div>
 
-        {/* Progress Text */}
-        <div className="flex justify-between w-full font-mono text-sm tracking-widest">
-          <span className="text-neutral-500 animate-pulse">BOOTING...</span>
-          <span className="text-red-500">{Math.round(progress)}%</span>
-        </div>
-      </div>
-    </div>
+            {/* Subtitle: Full Stack Developer */}
+            <motion.p
+              initial={{ opacity: 0, y: 10, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{
+                duration: 0.7,
+                delay: 0.2 + letters.length * 0.08 + 0.2,
+                ease: [0.56, 0.22, 0.05, 0.99],
+              }}
+              className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base lg:text-lg text-neutral-400 font-medium tracking-normal"
+            >
+              Full Stack Developer
+            </motion.p>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

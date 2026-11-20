@@ -1,99 +1,281 @@
-import { Terminal, Instagram, Github, Linkedin, Mail } from 'lucide-react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
-    const currentYear = new Date().getFullYear();
+  const [times, setTimes] = useState({
+    kozhikode: '',
+    zurich: '',
+    newyork: '',
+    tokyo: '',
+  });
 
-    return (
-        <footer className="relative bg-black border-t border-neutral-900 pt-16 pb-8 overflow-hidden z-20">
-            {/* Background element */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-px bg-linear-to-r from-transparent via-red-600/50 to-transparent" />
-            
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-8 mb-16">
-                    {/* Brand Section */}
-                    <div className="col-span-1 md:col-span-5">
-                        <Link to="/" className="inline-flex items-center gap-3 mb-6 group">
-                            <Terminal className="w-8 h-8 text-red-600 group-hover:text-red-500 transition-colors" />
-                            <span className="text-2xl font-black text-white uppercase tracking-tighter">
-                                Mridhul<span className="text-red-600">.</span>
-                            </span>
-                        </Link>
-                        <p className="text-neutral-400 text-lg mb-8 max-w-md">
-                            Architecting scalable systems and engineering high-performance software. Turning complex problems into elegant logic.
-                        </p>
-                        <div className="flex items-center gap-4 border border-neutral-800 bg-neutral-900/40 w-fit p-1 rounded-full px-2">
-                           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                           <span className="text-sm font-mono text-neutral-400">Available for freelance</span>
-                        </div>
-                    </div>
+  useEffect(() => {
+    const updateTimes = () => {
+      const now = new Date();
+      const getFormattedTime = (timeZone: string) =>
+        new Intl.DateTimeFormat('en-GB', {
+          timeZone,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false,
+        }).format(now);
 
-                    {/* Quick Links */}
-                    <div className="col-span-1 md:col-span-3">
-                        <h3 className="text-white font-bold uppercase tracking-widest mb-6">Navigation</h3>
-                        <ul className="space-y-4">
-                            {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((item) => (
-                                <li key={item}>
-                                    <Link 
-                                        to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                                        className="text-neutral-400 hover:text-red-500 transition-colors inline-block transform hover:translate-x-1 duration-300"
-                                    >
-                                        {item}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+      setTimes({
+        kozhikode: getFormattedTime('Asia/Kolkata'),
+        zurich: getFormattedTime('Europe/Zurich'),
+        newyork: getFormattedTime('America/New_York'),
+        tokyo: getFormattedTime('Asia/Tokyo'),
+      });
+    };
 
-                    {/* Social links */}
-                    <div className="col-span-1 md:col-span-4 lg:col-span-4">
-                         <h3 className="text-white font-bold uppercase tracking-widest mb-6">Connect</h3>
-                         <div className="flex flex-wrap gap-4 mb-8">
-                             {[
-                                 { icon: <Github className="w-5 h-5" />, href: "https://github.com/Mridhul2k03", label: "GitHub" },
-                                 { icon: <Linkedin className="w-5 h-5" />, href: "https://www.linkedin.com/in/mridhulkrishnatk/", label: "LinkedIn" },
-                                 { icon: <Instagram className="w-5 h-5" />, href: "https://www.instagram.com/__.mridhul.____/", label: "Instagram" },
-                             ].map((social, idx) => (
-                                 <a 
-                                     key={idx} 
-                                     href={social.href}
-                                     target="_blank"
-                                     rel="noopener noreferrer"
-                                     aria-label={social.label}
-                                     className="w-12 h-12 bg-neutral-900/50 border border-neutral-800 rounded-xl flex items-center justify-center text-neutral-400 hover:bg-red-600/10 hover:border-red-600/30 hover:text-red-500 transition-all duration-300 hover:-translate-y-1"
-                                 >
-                                     {social.icon}
-                                 </a>
-                             ))}
-                         </div>
-                         <div className="group inline-flex items-center gap-3 text-neutral-400 hover:text-white transition-colors">
-                             <Mail className="w-5 h-5 group-hover:text-red-500 transition-colors" />
-                             <a href="mailto:mridhulkrishnatk@gmail.com" className="font-mono text-sm">mridhulkrishnatk@gmail.com</a>
-                         </div>
-                    </div>
-                </div>
+    updateTimes();
+    const interval = setInterval(updateTimes, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
-                {/* Bottom Bar */}
-                <div className="pt-8 mt-4 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-6 relative">
-                    <p className="text-neutral-500 text-sm font-mono z-10">
-                        © {currentYear} Mridhul. All rights reserved.
-                    </p>
-                    
-                    {/* Glass effect name in center */}
-                    <div className="md:absolute md:left-1/2 md:-translate-x-1/2 md:top-1/2 md:-translate-y-1/2 px-6 py-2 rounded-2xl bg-white/3 border border-white/10 backdrop-blur-md shadow-[0_4px_30px_rgba(255,0,0,0.05)] z-10 group overflow-hidden transition-all duration-300 hover:bg-white/5 hover:border-red-600/30">
-                        <div className="absolute inset-0 bg-linear-to-r from-transparent via-red-600/10 to-transparent -translate-x-full group-hover:animate-[shimmer_1.5s_infinite]" />
-                        <span className="text-xl font-black tracking-[0.2em] bg-linear-to-r from-white via-neutral-200 to-neutral-400 bg-clip-text text-transparent uppercase text-center block drop-shadow-[0_0_8px_rgba(220,38,38,0.5)]">
-                            MRIDHUL
-                        </span>
-                    </div>
+  const worldClocks = [
+    { city: 'Kozhikode', region: 'INDIA / IST', time: times.kozhikode || '16:00:00' },
+    { city: 'Zürich', region: 'EUROPE / CET', time: times.zurich || '11:30:00' },
+    { city: 'New York', region: 'N. AMERICA / EST', time: times.newyork || '05:30:00' },
+    { city: 'Tokyo', region: 'ASIA / JST', time: times.tokyo || '19:30:00' },
+  ];
 
-                    <p className="text-neutral-500 text-sm font-mono flex items-center gap-2 z-10">
-                        Engineered by <span className="text-red-600">Mridhul</span>
-                    </p>
-                </div>
+  return (
+    <footer className="relative bg-[#070707] text-white border-t border-neutral-900 pt-14 sm:pt-16 overflow-hidden z-20 select-none">
+      {/* Top subtle border line */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12">
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 pb-12 sm:pb-14">
+          {/* Left Column: Brand, Description, World Clocks */}
+          <div className="lg:col-span-7 flex flex-col justify-between">
+            <div>
+              {/* Brand Header */}
+              <div className="flex items-center gap-3 mb-4 sm:mb-5">
+                <Link to="/" className="inline-flex items-center gap-1 group">
+                  <span className="text-xl sm:text-2xl font-black tracking-tight text-white uppercase group-hover:text-neutral-300 transition-colors">
+                    MRIDHUL
+                  </span>
+                  <span className="text-xs font-bold text-neutral-400 group-hover:text-white align-top -mt-2">
+                    ©
+                  </span>
+                </Link>
+                <span className="h-4 w-px bg-neutral-800" />
+                <span className="text-xs font-mono text-cyan-400 tracking-wider uppercase font-semibold">
+                  Systems Architect
+                </span>
+              </div>
+
+              {/* Description */}
+              <p className="text-xs sm:text-sm md:text-base text-neutral-400 max-w-xl font-normal leading-relaxed mb-6 sm:mb-8">
+                Architecting high-performance backend infrastructures, distributed microservices, and modern web applications. Engineered with precision in Kerala, India.
+              </p>
             </div>
-        </footer>
-    );
+
+            {/* Live World Clocks (Image 1 style) */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 pt-4 border-t border-neutral-900/80 mb-8 lg:mb-0">
+              {worldClocks.map((clock, idx) => (
+                <div key={idx} className="flex flex-col">
+                  <span className="font-mono text-xs sm:text-sm md:text-base font-bold text-white tracking-wider tabular-nums">
+                    {clock.time}
+                  </span>
+                  <span className="text-[11px] sm:text-xs font-medium text-neutral-300 mt-0.5">
+                    {clock.city}
+                  </span>
+                  <span className="text-[9px] sm:text-[10px] font-mono text-neutral-500 uppercase tracking-wider">
+                    {clock.region}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Columns: Navigation & Connect (Image 1 style) */}
+          <div className="lg:col-span-5 grid grid-cols-2 gap-6 sm:gap-12">
+            {/* Column 1: Navigation */}
+            <div>
+              <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 font-semibold block mb-4 sm:mb-6">
+                Navigation
+              </span>
+              <ul className="space-y-2.5 sm:space-y-3.5">
+                {[
+                  { name: 'Home', path: '/' },
+                  { name: 'About', path: '/about' },
+                  { name: 'Work [7]', path: '/projects' },
+                  { name: 'Skills', path: '/skills' },
+                  { name: 'Contact', path: '/contact' },
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      to={item.path}
+                      className="text-xs sm:text-sm md:text-base text-neutral-400 hover:text-cyan-300 transition-colors duration-200"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 2: Connect */}
+            <div>
+              <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 font-semibold block mb-4 sm:mb-6">
+                Connect
+              </span>
+              <ul className="space-y-2.5 sm:space-y-3.5">
+                {[
+                  { name: 'GitHub', href: 'https://github.com/Mridhul2k03' },
+                  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/mridhulkrishnatk/' },
+                  { name: 'Instagram', href: 'https://www.instagram.com/__.mridhul.____/' },
+                  { name: 'Email Protocol', href: 'mailto:mridhulkrishnatk@gmail.com' },
+                ].map((item) => (
+                  <li key={item.name}>
+                    <a
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs sm:text-sm md:text-base text-neutral-400 hover:text-cyan-300 transition-colors duration-200 inline-flex items-center gap-1 group"
+                    >
+                      <span>{item.name}</span>
+                      <span className="text-neutral-500 group-hover:text-cyan-400 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-xs">
+                        ↗
+                      </span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Middle Status Ticker (Image 1 style) */}
+        <div className="py-4 sm:py-6 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between gap-3 sm:gap-4 text-[11px] sm:text-xs font-mono text-neutral-500 text-center md:text-left">
+          <div className="flex items-center gap-2 sm:gap-4 flex-wrap justify-center md:justify-start">
+            <span>© 2026 MRIDHUL</span>
+            <span>•</span>
+            <span className="text-neutral-400">MRIDHULKRISHNA.IN</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="hidden sm:inline text-neutral-400">MRIDHULKRISHNATK@GMAIL.COM</span>
+            <span>•</span>
+            <span>BUILT IN KERALA</span>
+          </div>
+
+          <div className="text-cyan-400 tracking-wider uppercase text-[10px] sm:text-xs font-semibold">
+            ALL SYSTEMS OPERATIONAL
+          </div>
+        </div>
+
+        {/* Disclaimer / Fine Print */}
+        <p className="text-[10px] sm:text-[11px] font-mono text-neutral-600 text-center pb-6 sm:pb-8 pt-2">
+          Engineered for scale, high throughput, and zero downtime. Designed with minimalist aesthetics.
+        </p>
+      </div>
+
+      {/* Halftone / Dot-Matrix Mountain Landscape Art (Image 1) */}
+      <div className="w-full relative overflow-hidden pointer-events-none opacity-30 hover:opacity-50 transition-opacity duration-700 h-28 sm:h-44 md:h-64">
+        <svg
+          viewBox="0 0 1440 380"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-full h-full text-neutral-400"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <defs>
+            {/* Dot Pattern 1: Fine Density */}
+            <pattern id="dot-fine" width="6" height="6" patternUnits="userSpaceOnUse">
+              <circle cx="3" cy="3" r="1.2" fill="currentColor" />
+            </pattern>
+            {/* Dot Pattern 2: Dense */}
+            <pattern id="dot-dense" width="4" height="4" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.2" fill="currentColor" />
+            </pattern>
+            {/* Dot Pattern 3: Medium */}
+            <pattern id="dot-med" width="8" height="8" patternUnits="userSpaceOnUse">
+              <circle cx="4" cy="4" r="1.5" fill="currentColor" />
+            </pattern>
+            {/* Dot Pattern 4: Sun Stripes */}
+            <pattern id="dot-sun" width="5" height="5" patternUnits="userSpaceOnUse">
+              <circle cx="2.5" cy="2.5" r="1.5" fill="currentColor" />
+            </pattern>
+          </defs>
+
+          {/* Dotted Sun / Sphere */}
+          <circle cx="1120" cy="180" r="65" fill="url(#dot-sun)" />
+          {/* Horizontal lines through sun (Image 1) */}
+          <line x1="1050" y1="180" x2="1190" y2="180" stroke="#070707" strokeWidth="6" />
+          <line x1="1060" y1="195" x2="1180" y2="195" stroke="#070707" strokeWidth="6" />
+          <line x1="1075" y1="210" x2="1165" y2="210" stroke="#070707" strokeWidth="6" />
+
+          {/* Dotted Clouds in Sky */}
+          <g fill="url(#dot-fine)">
+            <ellipse cx="480" cy="190" rx="42" ry="9" />
+            <ellipse cx="180" cy="160" rx="36" ry="8" />
+          </g>
+
+          {/* Birds in Sky */}
+          <g stroke="currentColor" strokeWidth="1.5" fill="none">
+            <path d="M 870 120 Q 876 112 882 120 Q 888 112 894 120" />
+            <path d="M 910 138 Q 915 132 920 138 Q 925 132 930 138" />
+          </g>
+
+          {/* Background Mountain Peaks */}
+          <polygon
+            points="720,110 920,380 520,380"
+            fill="url(#dot-med)"
+          />
+          {/* Snowcap on main peak */}
+          <polygon
+            points="720,110 748,165 735,160 720,172 705,160 692,165"
+            fill="#ffffff"
+            opacity="0.8"
+          />
+
+          {/* Left Mid-Mountain */}
+          <polygon
+            points="240,200 480,380 0,380"
+            fill="url(#dot-fine)"
+          />
+
+          {/* Right Mid-Mountain */}
+          <polygon
+            points="1200,210 1440,380 960,380"
+            fill="url(#dot-fine)"
+          />
+
+          {/* Foreground Low Mountains & Forest Line (Dense Halftone) */}
+          <polygon
+            points="460,260 780,380 140,380"
+            fill="url(#dot-dense)"
+          />
+          <polygon
+            points="980,270 1340,380 620,380"
+            fill="url(#dot-dense)"
+          />
+
+          {/* Tree Peak Silhouettes at Base */}
+          <g fill="url(#dot-dense)">
+            {Array.from({ length: 36 }).map((_, i) => {
+              const x = i * 40;
+              const y = 330 + (i % 3) * 12;
+              return (
+                <polygon
+                  key={i}
+                  points={`${x},${y} ${x + 18},${y - 45} ${x + 36},${y}`}
+                />
+              );
+            })}
+          </g>
+
+          {/* Geometric Triangle Emblem at Bottom Left (Image 1) */}
+          <g stroke="currentColor" strokeWidth="1.5" fill="none" opacity="0.6">
+            <polygon points="30,360 45,330 60,360" />
+            <polygon points="36,358 45,340 54,358" />
+            <line x1="45" y1="340" x2="45" y2="358" />
+          </g>
+        </svg>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
